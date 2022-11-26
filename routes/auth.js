@@ -7,6 +7,7 @@ const {
     userLogin, 
     validationToken 
 } = require('../controllers/auth');
+const { jwtValidator } = require('../middlewares/jwt-validator');
 
 const router = Router();
 
@@ -26,7 +27,7 @@ router.post('/', [
 ], userLogin);
 
 //Validar y revalidar token
-router.get('/renew', validationToken);
+router.get('/renew', jwtValidator ,validationToken);
 
 
 
